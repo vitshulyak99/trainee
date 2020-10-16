@@ -1,0 +1,47 @@
+﻿@model LuckyDucky.MVC.Models.ContactMeModel;
+@{
+    ViewData["Title"] = "Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string patternName = @"^[a-zA-Z]+$";
+    string patternEmail = @"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$";
+}
+
+<h2>Shop</h2>
+<div class="container col-md-6 col-md-offset-8 mt-4">
+    @{ if (!(bool)Model.ContactMeInfo.IsContactMeRequested)
+        {
+           
+        <form class="bg-light p-3" method="post" asp-controller="Shop">
+            <h4 class="text-center mt-4">Contact Me</h4>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input type="email" asp-for="Email" class="form-control" pattern=@patternEmail required>
+                @Html.ValidationMessageFor(model => model.Email)
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input type="text" asp-for="Name" class="form-control" maxlength="100" pattern=@patternName required>
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <div class="form-group">
+                <label asp-for="Message"></label>
+                <textarea typeof="text" class="form-control" asp-for="Message" rows="3" maxlength="1000" required></textarea>
+                @Html.ValidationMessageFor(model => model.Message)
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        }
+
+        else
+        {
+            <p>
+                <h5>
+                    @Model.ContactMeInfo.UserName, we're working on your request, please give us some time to reach you.
+                </h5>
+            </p>
+        }
+    }
+</div>

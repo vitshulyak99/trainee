@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Lucky Ducky!</h1>
+    <div class="duck-image-container">
+        <img class="duck-image" src="~/images/home/duck.png" />
+    </div>
+    <div class="text-center">
+        <div class="shop-button-container">
+            <p>Get something for sure!</p>
+            <p>
+                <a class="btn btn-success" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
+            </p>
+        </div>
+        <div class="lottery-button-container">
+            <p> Or check your luck?</p>
+            <p>
+                <a class="btn btn-primary" asp-controller="Lottery" asp-action="Index">
+                    Lottery
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
