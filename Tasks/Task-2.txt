@@ -1,0 +1,33 @@
+Задание 2.
+
+Создайте абстрактный класс User. 
+Свойства: string Name, string Nickname, int Age, Role [enum UserRole {Base, Admin, Secret}], int Balance. 
+Методы: DoJob(), GetInfo()
+
+Создайте три класса: BaseUser, AdminUser, SecretUser
+
+Для BaseUser метод DoJob увеличивает баланс на 1, GetInfo() возвращает строку "Hello, my name is [Name] aka [NickName], I'm [Age] years old [Role] with [Balance] money in my pocket". 
+Если поле NickName не задано - то фразу aka [NickName] не выводить.
+
+Для AdminUser метод DoJob увеличивает баланс на 2, GetInfo возвращает строку "Hello, my name is [Name], I'm [Age] years old [Role] with [Balance] in my Bitcoin Wallet".
+Если поле Balance меньше 10 - то фраза with [Balance] in my Bitcoin Wallet не выводится.
+
+Для SecretUser DoJob увеличивает баланс на случайное число от 1 до 5, GetInfo возвращает сроку "Info is secret".
+
+Для всех классов должны быть реализованы конструкторы, принимающие Name, Name + Age, Name + Age + Balance
+
+Создайте класс UserManager, в нём создайте список юзеров, внесите туда 5 пользователей (кодом).
+
+UI:
+пользователь вводит 1 - выводится построчно список всех пользователей в виде "[Role] [Name] ([Nickname]) [Age] yo [Balance]"
+пользователь вводит 2 - создаётся новый пользователь, роль - BaseUser
+пользователь вводит 3 - у каждого User вызывается метод DoJob
+пользователь вводит 4 - у каждого User отнимается от баланса 2. Если баланс у User 0 - то баланс не уменьшается.
+пользователь вводит 5 - выводится GetInfo Для каждого User с балансом 0
+пользователь вводит 6 - все BaseUser с балансом больше 10 становятся AdminUser, их баланс уменьшается на 10. Все AdminUser с балансом больше 20 становятся SecretUser, их баланс превращается в 0
+пользователь вводит 7 - все SecretUser с балансом больше 30 удаляются
+пользователь вводит 8 - первый User, не являющийся SecretUser, теряет с баланса 5.
+пользователь вводит 9 - случайный User получает к балансу 10
+пользователь вводит 0 - все изменения, сделанные пользователем, обнуляются, и он начинает работу с изначальным массиовм Users
+
+Все запросы делать с помощью LINQ, в Method нотации.
